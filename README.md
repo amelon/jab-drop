@@ -159,6 +159,13 @@ Example below use browserify and make jquery global object (window.$ must be ava
     }
 
 
+
+    function processFinalRows(rows) {
+      var res = _.map(rows, rowToHtml );
+
+      $('#preview').html(['<table>', res.join(''), '</table>'].join(''));
+    }
+
     function rowToHtml(row) {
       if (!row) return '';
       return '<tr>' +
