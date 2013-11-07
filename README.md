@@ -176,7 +176,7 @@ Example below use browserify and make jquery global object (window.$ must be ava
 ### Some browserify if interrested
 Using grunt-browserify
 
-  grunt.initConfig({
+    grunt.initConfig({
         bundle_dest: 'public/bundle'
       , app_cli_path: 'assets'
       , app_cli_js: '<%= app_cli_path %>'
