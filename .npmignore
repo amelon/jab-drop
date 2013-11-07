@@ -1,0 +1,6 @@
+.git*
+.travis.yml
+.mailmap
+*.swp
+.DS_Store
+.nodemonignore

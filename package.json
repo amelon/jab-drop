@@ -1,0 +1,20 @@
+{
+  "name": "jab-drop",
+  "version": "0.0.1",
+  "description": "drop file in browser and work with it on browser (optionally click or paste)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "A. Mélon <paztaga@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "~2.2.1",
+    "jszip": "~0.2.1",
+    "normalized-upload": "0.0.6"
+  },
+
+  "browser": {
+    "node-zip": "jszip"
+  }
+}
