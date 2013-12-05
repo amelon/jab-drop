@@ -93,7 +93,6 @@
       }
     });
 
-
     if (options.paste_on_document) {
       document.onpaste = function(e) {
         e.preventDefault();
@@ -105,14 +104,7 @@
 
 
   $.fn.jabdrop = function (options) {
-    var opts, fn, action;
-
-    if (typeof options == 'string') {
-      action = options;
-      if (action == 'destroy') {
-
-      }
-    }
+    var opts, fn;
 
     if (typeof options == 'function') {
       fn = options;

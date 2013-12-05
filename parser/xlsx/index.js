@@ -3,6 +3,7 @@
 var xlsx = {
   fromFile: require('./file')
 , fromClipboard: require('./clipboard')
+, lib: require('../../lib/vendor/file_xlsx')
 };
 
 if (global.$ && global.$.jabdrop) {
