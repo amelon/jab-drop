@@ -142,7 +142,7 @@ function firstWorksheetWithContent(worksheets, filter) {
 
 
 function xlsRowClean(v) {
-  return v && v.value || false;
+  return v && v.value || '';
 }
 
 
