@@ -1,16 +1,21 @@
 {
   "name": "jab-drop",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "drop file in browser and work with it in browser (optionally click or paste)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "author": "A. Mélon <paztaga@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amelon/jab-drop"
+  },
   "dependencies": {
-    "lodash": "^2.2.1",
-    "jszip": "^0.2.1",
+    "lodash": "^2.4.1",
+    "jszip": "^2.4.0",
     "normalized-upload": "0.0.6"
   },
   "browser": {
