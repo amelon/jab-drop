@@ -28,13 +28,14 @@
   var normalize = require('normalized-upload');
 
 
-  function sendFilteredFiles(obj_with_files, filter, callback) {
+  function sendFilteredFiles(obj_with_files, filter, callback, notify) {
+    notify('drop')
     // e has items
     normalize(obj_with_files, function(e) {
       if (filter === noop) return callback(e);
       e.items = map(e.items, filter);
-      callback(e);
-    });
+      callback(e)
+    })
   }
 
 
@@ -53,25 +54,29 @@
     var $el = $(el);
     var callback = options.callback;
     var file_filter = options.filter || noop;
+    var notify = options.notify || noop;
 
     if ($el.data('jab-drop')) return;
     $el.data('jab-drop', true);
 
     $el.on({
       dragenter: function(e) {
+        notify('dragenter')
         $el.addClass('over');
       }
     , dragover: function(e) {
+        notify('dragover')
         e.preventDefault();
       }
     , dragleave: function(e) {
+        notify('drapleave')
         $el.removeClass('over');
       }
     , drop: function(e) {
         e.stopPropagation();
         e.preventDefault();
         $el.removeClass('over');
-        sendFilteredFiles(e.originalEvent, file_filter, callback);
+        sendFilteredFiles(e.originalEvent, file_filter, callback, notify)
       }
     , click: function(e) {
         e.preventDefault();
@@ -80,11 +85,10 @@
         filepicker(options, function(files, e, input) {
           // make files compatible with normalize mimic event form
           var e_mic = {dataTransfer: {files: files}};
-          sendFilteredFiles(e_mic, file_filter, callback);
-        });
+          sendFilteredFiles(e_mic, file_filter, callback, notify);
+        })
       }
     , 'destroy.jab.drop': function() {
-        console.log('destroy.jab.drop');
         $el.unbind('dragenter', 'dragleave', 'dragover', 'drop', 'click');
         $el.data('jab-drop', false);
         if (options.paste_on_document) {
@@ -96,7 +100,7 @@
     if (options.paste_on_document) {
       document.onpaste = function(e) {
         e.preventDefault();
-        sendFilteredFiles(e, file_filter, callback);
+        sendFilteredFiles(e, file_filter, callback, notify);
       };
     }
   }
@@ -124,15 +128,16 @@
 
 
   $.fn.jabdrop.defaults = {
-      callback: noop
+      callback: noop,
+      notify: noop,
     // http://stackoverflow.com/questions/181214/file-input-accept-attribute-is-it-useful/10503561#10503561
     // null => accept everything
-    , accept: null
-    , multiple: false
-    , directory: false
-    , filter: noop
-    , filepicker: false
-    , paste_on_document: false
+      accept: null,
+      multiple: false,
+      directory: false,
+      filter: noop,
+      filepicker: false,
+      paste_on_document: false,
     };
 
   $.jabdrop = { parser: {}  };
