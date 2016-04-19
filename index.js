@@ -28,8 +28,7 @@
   var normalize = require('normalized-upload');
 
 
-  function sendFilteredFiles(obj_with_files, filter, callback, notify) {
-    notify('drop')
+  function sendFilteredFiles(obj_with_files, filter, callback) {
     // e has items
     normalize(obj_with_files, function(e) {
       if (filter === noop) return callback(e);
@@ -76,7 +75,8 @@
         e.stopPropagation();
         e.preventDefault();
         $el.removeClass('over');
-        sendFilteredFiles(e.originalEvent, file_filter, callback, notify)
+        notify('drop')
+        sendFilteredFiles(e.originalEvent, file_filter, callback)
       }
     , click: function(e) {
         e.preventDefault();
@@ -85,7 +85,8 @@
         filepicker(options, function(files, e, input) {
           // make files compatible with normalize mimic event form
           var e_mic = {dataTransfer: {files: files}};
-          sendFilteredFiles(e_mic, file_filter, callback, notify);
+          notify('drop')
+          sendFilteredFiles(e_mic, file_filter, callback);
         })
       }
     , 'destroy.jab.drop': function() {
@@ -99,8 +100,10 @@
 
     if (options.paste_on_document) {
       document.onpaste = function(e) {
-        e.preventDefault();
-        sendFilteredFiles(e, file_filter, callback, notify);
+        e.preventDefault()
+        e.stopPropagation()
+        notify('drop')
+        sendFilteredFiles(e, file_filter, callback);
       };
     }
   }
