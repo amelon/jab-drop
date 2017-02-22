@@ -16,7 +16,7 @@
   "dependencies": {
     "lodash": "^2.4.1",
     "jszip": "^2.4.0",
-    "normalized-upload": "0.0.6"
+    "normalized-upload": "0.0.7"
   },
   "browser": {
     "node-zip": "jszip"
