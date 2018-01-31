@@ -3,6 +3,11 @@ jab-drop
 
 drop file in browser and work with it on browser (optionally click or paste)
 
+
+## Deprecated
+see: https://www.npmjs.com/package/@b-flower/bdn-xlsx-drop
+
+
 ## Motivation
 
 Initialy a port of [component\drop][1] (too many browserify issues) with addition of [filepicker][2] and then adding some browser treatement to be able to read xlsx file.

@@ -1,6 +1,6 @@
 {
   "name": "jab-drop",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "drop file in browser and work with it in browser (optionally click or paste)",
   "main": "index.js",
   "scripts": {
